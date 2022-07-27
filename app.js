@@ -10,17 +10,11 @@ function findKeysInObject(object, arrayOfKeys) {
     console.log(Object.getOwnPropertyNames(obj));
     console.log('start searching....');
     
-      
     for (let key in obj) {
-      // console.log('key:', key, 'type:', typeof obj[key]);
-      
       if (arrayOfKeys.includes(key) && !findStringKey) {
-        // console.log('find!!!--------------');
         const addPoint = {};
 
         for (let findKey of arrayOfKeys) {
-          // console.log('key founded', findKey);
-
           if (Object.getOwnPropertyNames(obj).includes(findKey)) {
             addPoint[findKey] = obj[findKey];
           } else {
@@ -44,28 +38,31 @@ function findKeysInObject(object, arrayOfKeys) {
 
   findKeysInObj(object, arrayOfKeys);
 
+  console.log(result);
   return result;
 }
 
 const someObj = {
-  name: 'first',
-  name2: 'some',
+  name1: 'first',
   name3: 'some',
   key2: [
-    'name', 
+    'name1', 
     {
-      name: 'second',
+      name1: 'second',
       some: {
-        name: 'third'
+        name2: 'third'
       }
     },
   ],
   key3: {
-    name: 'fourth',
+    name1: 'fourth',
     name2: {
-      name: 'sixth',
+      name2: 'sixth',
     }
   },
+  name2: 'some',
 }
 
-console.log(findKeysInObject(someObj, ['name', 'name2']));
+const someArrayOfKeys = ['name1', 'name2'];
+
+findKeysInObject(someObj, someArrayOfKeys);
